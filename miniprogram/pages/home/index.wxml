@@ -1,0 +1,28 @@
+<view class="container">
+<!-- 导航栏页面切换 -->
+  <view class="nav-container">
+    <view class='nav'> 
+      <block  wx:for='{{title}}' wx:key="{{index}}">     
+        <view class="news {{currentIndex == index ? 'news-active':''}} " bindtap='switchBottomTab' data-index='{{index}}'>
+          <text>{{item}}</text>
+        </view>      
+      </block>
+    </view>
+  </view>
+<!-- 不同页面的展示 -->
+
+  <swiper current="{{currentIndex}}" bindchange='changeView'duration="300" class='display-major'> 
+    <swiper-item>
+      <news></news>
+    </swiper-item>
+    <!-- 公益活动 -->
+    <swiper-item>
+      <activity></activity>
+    </swiper-item>
+    <swiper-item>康复教育</swiper-item>
+    <swiper-item>专家机构</swiper-item>
+  </swiper>
+
+<!-- 新闻标题展示 -->
+</view>
+

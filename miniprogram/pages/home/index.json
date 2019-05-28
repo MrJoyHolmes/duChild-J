@@ -1,0 +1,7 @@
+{
+  "component": true,
+  "usingComponents": {
+  "news":"/components/news/index",
+  "activity": "/components/activity/index"
+  }
+}

@@ -1,0 +1,42 @@
+.nav-container {
+  height: 10%;
+  box-sizing: border-box;
+  font-size: 30rpx;
+  background-color:#4fbfff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+} 
+
+.nav{
+  display: flex;
+  flex-direction: row;
+  height:60%;
+  width: 85%;
+  background-color:#3db6ff;
+  border-radius: 30rpx;
+  padding: 10rpx;
+}
+
+.news{
+  display: inline-block;
+  color: white;
+  flex:1;
+  text-align: center;
+  padding: 10rpx;
+  margin:auto;
+}
+.news-active{
+  background-color:#1ca5fd;
+  border-radius: 20rpx; 
+}
+
+.display-major{
+    height: 90%;
+    box-sizing: border-box;
+}
+
+.swiper-major{
+  height: 100%;
+  width: 100%;
+}

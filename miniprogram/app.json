@@ -1,0 +1,48 @@
+{
+  "pages": [
+    "pages/home/index",
+    "pages/parents2/index",
+    "pages/me/index",
+    "pages/publish/index"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fbf9fe",
+    "navigationBarTitleText": "嘟小孩",
+    "navigationBarTextStyle": "black",
+    "backgroundColor": "#fbf9fe"
+  },
+  "tabBar": {
+    "color": "#959394",
+    "selectedColor": "#4fbfff",
+    "borderStyle": "black",
+    "backgroundColor": "#ffffff",
+    "list": [
+      {
+        "pagePath": "pages/home/index",
+        "iconPath": "image/home.png",
+        "selectedIconPath": "image/home-hl.png",
+        "text": "首页"
+      },
+      {
+        "pagePath": "pages/parents2/index",
+        "iconPath": "image/parents.png",
+        "selectedIconPath": "image/parents-hl.png",
+        "text": "家长天地"
+      },
+      {
+        "pagePath": "pages/me/index",
+        "iconPath": "image/me.png",
+        "selectedIconPath": "image/me-hl.png",
+        "text": "我的"
+      },
+      {
+        "pagePath": "pages/publish/index",
+        "iconPath": "image/me.png",
+        "selectedIconPath": "image/me-hl.png",
+        "text": "发布"
+      }
+    ]
+  },
+  "sitemapLocation": "sitemap.json"
+}

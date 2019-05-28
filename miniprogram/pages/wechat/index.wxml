@@ -1,0 +1,5 @@
+    <view class='' bindtap=''>
+      <web-view src="https://mp.weixin.qq.com/s/RXL2nIPBhm-ttRXX4nL49Q">
+
+      </web-view>
+    </view>
