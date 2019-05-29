@@ -209,6 +209,8 @@ Page({
           // data 字段表示需新增的 JSON 数据
           data: {
             articleId: articleId,
+            nickName: app.globalData.userInfo.nickName,
+            avatarUrl: app.globalData.userInfo.avatarUrl,
             content: content,
             images: urls,
             zanNum: 0,

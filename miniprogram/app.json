@@ -1,9 +1,11 @@
 {
   "pages": [
     "pages/home/index",
+    "pages/parents/index",
     "pages/parents2/index",
     "pages/me/index",
-    "pages/publish/index"
+    "pages/publish/index",
+    "pages/answer/answer"
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -37,10 +39,10 @@
         "text": "我的"
       },
       {
-        "pagePath": "pages/publish/index",
-        "iconPath": "image/me.png",
-        "selectedIconPath": "image/me-hl.png",
-        "text": "发布"
+        "pagePath": "pages/parents/index",
+        "iconPath": "image/parents.png",
+        "selectedIconPath": "image/parents-hl.png",
+        "text": "家长天地"
       }
     ]
   },
