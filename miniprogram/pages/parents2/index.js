@@ -178,13 +178,8 @@ Page({
       })
 
       var myDate = new Date()
-      var myYear = myDate.getFullYear()
-      var myMonth = myDate.getMonth()
-      var myHour = myDate.getHours()
-      var myMinute = myDate.getMinutes()
-      var mySecond = myDate.getSeconds()
-      var myMSecond = myDate.getMilliseconds()
-      var articleId = '' + myYear + myMonth + myHour + myMinute + mySecond + myMSecond
+      var myTime = myDate.getTime()
+      var articleId = myTime
 
       // 将选择的图片组成一个Promise数组，准备进行并行上传
       const arr = this.data.images.map((currentValue,index) => {
@@ -196,12 +191,12 @@ Page({
       })
 
       Promise.all(arr).then(res => {
-        console.log(res)
+        //console.log(res)
         return res.map(item => item.fileID)
       }).catch(err => {
         console.log(">>>> upload images error:", err)
       }).then(urls => {
-        console.log(urls)
+        //console.log(urls)
         // 调用保存问题的后端接口
         const db = wx.cloud.database()
         const user = db.collection('article')
@@ -216,44 +211,14 @@ Page({
             zanNum: 0,
             zanIds: []
           },
-          success(res) {
-            // res 是一个对象，其中有 _id 字段标记刚创建的记录的 id
-            console.log(res)
-            wx.hideLoading()
-          },
-          fail: console.error
+        }).then(res => {
+          console.log(res)
+          wx.hideLoading()
+          wx.navigateTo({
+            url: '../publish/index'
+          })
         })
       })
-
-      // // 开始并行上传图片
-      // Promise.all(arr).then(res => {
-      //   // 上传成功，获取这些图片在服务器上的地址，组成一个数组
-      //   return res.map(item => JSON.parse(item.data).url)
-      // }).catch(err => {
-      //   console.log(">>>> upload images error:", err)
-      // }).then(urls => {
-      //   // 调用保存问题的后端接口
-      //   return createQuestion({
-      //     title: title,
-      //     content: content,
-      //     images: urls
-      //   })
-      // }).then(res => {
-      //   // 保存问题成功，返回上一页（通常是一个问题列表页）
-      //   const pages = getCurrentPages();
-      //   const currPage = pages[pages.length - 1];
-      //   const prevPage = pages[pages.length - 2];
-
-      //   // 将新创建的问题，添加到前一页（问题列表页）第一行
-      //   prevPage.data.questions.unshift(res)
-      //   $digest(prevPage)
-
-      //   wx.navigateBack()
-      // }).catch(err => {
-      //   console.log(">>>> create question error:", err)
-      // }).then(() => {
-      //   wx.hideLoading()
-      // })
     }
   }
 })

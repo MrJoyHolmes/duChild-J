@@ -25,7 +25,7 @@ Page({
     })
       .get({
         success: function (res) {
-          console.log(res.data[0].avatarUrl)
+          //console.log(res.data[0].avatarUrl)
           that.setData({
             article: res.data[0]
           })

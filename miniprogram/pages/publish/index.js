@@ -1,71 +1,85 @@
-// miniprogram/pages/publish/index.js
-var that;
+const app = getApp();
 Page({
   data: {
-    images: [],
-    uploadedImages: [],
-    //imageWidth: getApp().screenWidth / 4 - 10
+    indicatorDots: false,
+    autoplay: true,
+    interval: 5000,
+    duration: 1000,
+    feed: [],
+    feed_length: 0
   },
-  onLoad: function (options) {
-    that = this; var objectId = options.objectId; console.log(objectId);
+  onLoad: function () {
+    console.log('onLoad')
+    var that = this
+    //调用应用实例的方法获取全局数据
+    this.refresh();
   },
-  chooseImage: function () {
-    // 选择图片
-    wx.chooseImage({
-      count: 3, // 默认9
-      sizeType: ['compressed'],
-      sourceType: ['album', 'camera'],
-      // 可以指定来源是相册还是相机，默认二者都有
-      success: function (res) {
-        // 返回选定照片的本地文件路径列表，tempFilePath可以作为img标签的src属性显示图片
-        var tempFilePaths = res.tempFilePaths;
-        console.log(tempFilePaths);
-        that.setData({
-          images: that.data.images.concat(tempFilePaths)
+
+  bindItemTap: function (e) {
+    //console.log(e.currentTarget.dataset.articleid)
+    app.globalData.articleId = e.currentTarget.dataset.articleid
+    wx.navigateTo({
+      url: '../answer/answer'
+    })
+  },
+  upper: function () {
+    wx.showNavigationBarLoading()
+    this.refresh();
+    console.log("upper");
+    setTimeout(function () { wx.hideNavigationBarLoading(); wx.stopPullDownRefresh(); }, 2000);
+  },
+  lower: function (e) {
+    wx.showNavigationBarLoading();
+    var that = this;
+    setTimeout(function () { wx.hideNavigationBarLoading(); that.nextLoad(); }, 1000);
+    console.log("lower")
+  },
+  //scroll: function (e) {
+  //  console.log("scroll")
+  //},
+
+  //网络请求数据, 实现刷新
+  refresh0: function () {
+    var index_api = '';
+    util.getData(index_api)
+      .then(function (data) {
+        //this.setData({
+        //
+        //});
+        console.log(data);
+      });
+  },
+
+  //使用本地 fake 数据实现刷新效果
+  refresh: function () {
+    const db = wx.cloud.database()
+    db.collection('article').orderBy('articleId', 'desc').limit(6)
+      .get()
+      .then(res => {
+        let feed = res.data
+        //console.log(feed);
+        this.setData({
+          feed: feed,
+          feed_length: feed.length
         });
-      }
-    })
+        //console.log(this.data.feed)
+      })
+      .catch(console.error)
   },
-  // 图片预览
-  previewImage: function (e) {
-    //console.log(this.data.images);
-    var current = e.target.dataset.src
-    wx.previewImage({
-      current: current,
-      urls: this.data.images
-    })
-  },
-  // submit: function () {        
-  //   // 提交图片，事先遍历图集数组
-  //   that.data.images.forEach(function (tempFilePath) {
-  //     new AV.File('file-name', {
-  //       blob: {
-  //         uri: tempFilePath,
-  //       },
-  //     }).save().then(                
-  //       // file => console.log(file.url())
-  //     function (file) {                    
-  //       // 先读取
-  //       var uploadedImages = that.data.uploadedImages;
-  //       uploadedImages.push(file.url());                    
-  //       // 再写入
-  //       that.setData({
-  //         uploadedImages: uploadedImages
-  //       }); console.log(uploadedImages);
-  //     }
-  //     ).catch(console.error);
-  //   });
-  //   wx.showToast({
-  //     title: '评价成功', success: function () {
-  //       wx.navigateBack();
-  //     }
-  //   });
-  // }, 
-  delete: function (e) {
-    var index = e.currentTarget.dataset.index; var images = that.data.images;
-    images.splice(index, 1);
-    that.setData({
-      images: images
-    });
+
+  //使用本地 fake 数据实现继续加载效果
+  nextLoad: function () {
+    const db = wx.cloud.database()
+    db.collection('article').orderBy('articleId', 'desc').skip(this.data.feed_length).limit(6)
+      .get()
+      .then(res => {
+        let next_data = res.data
+        this.setData({
+          feed: this.data.feed.concat(next_data),
+          feed_length: this.data.feed_length + next_data.length
+        });
+        //console.log(this.data.feed)
+      })
+      .catch(console.error)
   }
-})
+});

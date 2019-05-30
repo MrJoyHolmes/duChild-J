@@ -24,11 +24,6 @@ Page({
       url: '../answer/answer'
     })
   },
-  bindQueTap: function () {
-    wx.navigateTo({
-      url: '../question/question'
-    })
-  },
   upper: function () {
     wx.showNavigationBarLoading()
     this.refresh();
@@ -60,16 +55,16 @@ Page({
   //使用本地 fake 数据实现刷新效果
   refresh: function () {
     const db = wx.cloud.database()
-    db.collection('article').limit(5)
+    db.collection('article').orderBy('articleId', 'desc').limit(6)
       .get()
       .then(res => {
         let feed = res.data
-        console.log(feed);
+        //console.log(feed);
         this.setData({
           feed: feed,
           feed_length: feed.length
         });
-        console.log(this.data.feed)
+        //console.log(this.data.feed)
       })
       .catch(console.error)
   },
@@ -77,7 +72,7 @@ Page({
   //使用本地 fake 数据实现继续加载效果
   nextLoad: function () {
     const db = wx.cloud.database()
-    db.collection('article').skip(this.data.feed_length).limit(5)
+    db.collection('article').orderBy('articleId', 'desc').skip(this.data.feed_length).limit(6)
       .get()
       .then(res => {
         let next_data = res.data
@@ -85,7 +80,7 @@ Page({
           feed: this.data.feed.concat(next_data),
           feed_length: this.data.feed_length + next_data.length
         });
-        console.log(this.data.feed)
+        //console.log(this.data.feed)
       })
       .catch(console.error)
   }

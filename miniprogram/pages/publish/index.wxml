@@ -1,14 +1,42 @@
-<view class='page'>
-<view class="gallery">
-    <view class="item" wx:for="{{images}}" wx:key="">
-        <image src="{{item}}" data-src="{{item}}" bindtap="previewImage" mode="aspectFill" />
+<!--pages/parents/index.wxml-->
 
-        <!-- 删除按钮 -->
-        <view class="delete" bindtap="delete" data-index="{{index}}">X</view>
-    </view>
-    <view class="item" bindtap="chooseImage">
-        <view class='addIcon'>+</view>
-    </view>
-</view>
-<button type="primary" bindtap="submit">提交</button>
-</view>
+
+<scroll-view scroll-y="true" class="container discovery withtab" bindscrolltoupper="upper" bindscrolltolower="lower"  scroll-into-view="{{toView}}" scroll-top="{{scrollTop}}">
+  <view class="ctnt0">
+    <block wx:for="{{feed}}" wx:for-index="idx" wx:for-item="item" data-idx="idx" wx:key="">
+      <view class="feed-item">
+        <view class="feed-source">
+          <a class="">
+            <view class="avatar">
+              <image src="{{item.avatarUrl}}"></image>
+            </view>
+            <text>{{item.nickName}}</text>
+          </a>
+        </view>
+        <view class="feed-content"  bindtap="bindItemTap" data-articleId="{{item.articleId}}">
+          <!-- <view class="question">
+            <a class="question-link">
+              <text>{{item.articleId}}</text>
+            </a>
+          </view> -->
+          <view class="answer-body">
+            <view>
+              <text class="answer-txt">{{item.content}}</text>
+            </view>
+            <view class="answer-actions">
+              <view class="like dot">
+                <a>{{item.zanNum}} 赞同 </a>
+              </view>
+              <view class="comments dot">
+                <a>{{item.zanNum}} 评论 </a>
+              </view>
+              <!-- <view class="follow-it">
+                <a>收藏问题</a>
+              </view> -->
+            </view>
+          </view>
+        </view>
+      </view>
+    </block>
+  </view>
+</scroll-view>

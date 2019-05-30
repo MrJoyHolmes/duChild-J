@@ -27,7 +27,7 @@
         "text": "首页"
       },
       {
-        "pagePath": "pages/parents2/index",
+        "pagePath": "pages/publish/index",
         "iconPath": "image/parents.png",
         "selectedIconPath": "image/parents-hl.png",
         "text": "家长天地"
@@ -37,12 +37,6 @@
         "iconPath": "image/me.png",
         "selectedIconPath": "image/me-hl.png",
         "text": "我的"
-      },
-      {
-        "pagePath": "pages/parents/index",
-        "iconPath": "image/parents.png",
-        "selectedIconPath": "image/parents-hl.png",
-        "text": "家长天地"
       }
     ]
   },
