@@ -7,7 +7,12 @@ Page({
    */
   data: {
     articleId: null,
-    article: {}
+    id:'',
+    article: {},
+    liked:false,
+    zanNum:0,
+    zanIds:[],
+    comment:[]
   },
 
   /**
@@ -19,7 +24,6 @@ Page({
     })
     var that = this
     const db = wx.cloud.database()
-    const user = db.collection('article')
     db.collection('article').where({
       articleId: this.data.articleId,
     })
@@ -27,11 +31,60 @@ Page({
         success: function (res) {
           //console.log(res.data[0].avatarUrl)
           that.setData({
-            article: res.data[0]
+            article: res.data[0],
+            zanNum: res.data[0].zanNum,
+            zanIds: res.data[0].zanIds,
+            id: res.data[0]._id
           })
+          if (res.data[0].zanIds.indexOf(app.globalData.openid)!= -1){
+            that.setData({
+              liked:true
+            })
+          }
         },
         fail: console.error
       })
+  },
+  onLike: function(){
+    if(this.data.liked){
+      this.setData({
+        zanNum: this.data.zanNum - 1,
+        liked: false
+      })
+      var zan = this.data.zanIds
+      zan.splice(zan.indexOf(app.globalData.openid),1)
+      const db = wx.cloud.database()
+      const user = db.collection('article')
+      console.log(zan)
+      db.collection('article').doc(this.data.id).update({
+        data: {
+          zanNum: this.data.zanNum,
+          zanIds: zan
+        },
+        success: function (res) {
+          console.log(res)
+        }
+      })
+    }else{
+      this.setData({
+        zanNum: this.data.zanNum + 1,
+        liked: true
+      })
+      var zan = this.data.zanIds
+      zan.push(app.globalData.openid)
+      const db = wx.cloud.database()
+      const user = db.collection('article')
+      console.log(zan)
+      db.collection('article').doc(this.data.id).update({
+        data:{
+          zanNum: this.data.zanNum,
+          zanIds: zan
+        },
+        success: function (res) {
+          console.log(res)
+        }
+      })
+    }
   },
 
   /**

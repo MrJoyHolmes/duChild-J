@@ -20,8 +20,8 @@
             </a>
           </view> -->
           <view class="answer-body">
-            <view>
-              <text class="answer-txt">{{item.content}}</text>
+            <view class="answer-text">
+              <text>{{item.content}}</text>
             </view>
             <view class="answer-actions">
               <view class="like dot">
@@ -40,3 +40,6 @@
     </block>
   </view>
 </scroll-view>
+<view bindtap='adddetial'>
+  <image class="add_icon" src="../../images/write.png"></image>
+</view>

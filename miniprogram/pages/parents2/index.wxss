@@ -68,7 +68,11 @@ page {
 .question-title {
   flex: 1;
 }
-
+.weui-textarea{
+  display: block;
+  height: 150rpx;
+  width: 100%
+}
 .weui-textarea-counter, .title-input-counter {
   color: #b3b3b3;
   font-size: 14px;

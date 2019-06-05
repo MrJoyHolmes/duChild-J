@@ -7,4 +7,7 @@
     </block>
   </view>
   <button bindtap='onGetOpenid'>获取头像昵称</button>
+    <view class="WxComment">
+    <WxComment tipOne="Markdown " tipTwo="will be supported, Powered by yicm." submitBtnText="回复" articleID="8888" contentLen='1' theme="light"></WxComment>
+  </view>
 </view>

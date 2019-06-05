@@ -1,3 +1,5 @@
 {
-  "usingComponents": {}
+  "usingComponents": {
+    "WxComment": "/components/WxComment/WxComment"
+  }
 }

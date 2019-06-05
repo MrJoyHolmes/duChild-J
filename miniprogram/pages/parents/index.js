@@ -15,8 +15,30 @@ Page({
     var that = this
     //调用应用实例的方法获取全局数据
     this.refresh();
+    this.getOpenid()
   },
-
+  getOpenid: function () {
+    // 调用云函数
+    wx.cloud.callFunction({
+      name: 'login',
+      data: {},
+      success: res => {
+        console.log('[云函数] [login] user openid: ', res.result.openid)
+        app.globalData.openid = res.result.openid
+      },
+      fail: err => {
+        console.error('[云函数] [login] 调用失败', err)
+        wx.navigateTo({
+          url: '../deployFunctions/deployFunctions',
+        })
+      }
+    })
+  },
+  adddetial: function () {
+    wx.navigateTo({
+      url: '../parents2/index',
+    })
+  },
   bindItemTap: function (e) {
     //console.log(e.currentTarget.dataset.articleid)
     app.globalData.articleId = e.currentTarget.dataset.articleid

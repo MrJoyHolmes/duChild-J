@@ -27,7 +27,7 @@
         "text": "首页"
       },
       {
-        "pagePath": "pages/publish/index",
+        "pagePath": "pages/parents/index",
         "iconPath": "image/parents.png",
         "selectedIconPath": "image/parents-hl.png",
         "text": "家长天地"

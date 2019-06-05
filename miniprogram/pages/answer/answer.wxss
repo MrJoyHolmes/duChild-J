@@ -131,6 +131,8 @@
     font-size: 32rpx;
     color: #454545;
     line-height: 44rpx;
+    word-break: keep-all;
+    word-wrap: break-word
 }
 .answer-content image{
     width: 100%;
@@ -189,4 +191,9 @@
     display: block;
     font-size: 14rpx;
     color: #bebebe;
+}
+
+.WxComment{
+  margin-bottom: 80rpx;
+  background: #fff;
 }
