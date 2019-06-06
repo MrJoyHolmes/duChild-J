@@ -3,12 +3,13 @@
 * github: https://github.com/yicm/WxComment
 * github_page: https://yicm.github.io
 */
-const AV = require('../../libs/leancloud/av-weapp-min.js');
+var AV = require('../../libs/leancloud/av-weapp-min.js');
 var Common = require('../../libs/scripts/common.js');
 // LeanCloud 应用的 ID 和 Key
+const app = getApp();
 AV.init({
-  appId: '0EqSlbBMyOg8Uh9f6YOezFPC-gzGzoHsz',
-  appKey: '29pGOln34BtApAvuLh2iXD1E',
+  appId: 'qdl4sawDCfbgSxPKuFxCw7vz-gzGzoHsz',
+  appKey: 'p0dTqCyX9GWTKBFEmoWeTEgK',
 });
 
 Component({
@@ -45,6 +46,7 @@ Component({
       type: String,
       value: '',
       observer: function (newVal, oldVal) {
+        console.log(app.globalData.openid);
         console.log(this.data.articleID);
         var that = this;
         // 定义内部Promise相关函数
@@ -279,6 +281,7 @@ Component({
     }
   },
   data: {
+    name: '223',
     textarea_focus: false,
     is_sub_comment: false,
     sub_comment_p_comment_id: '',
@@ -379,7 +382,11 @@ Component({
           console.log("获取用户的当前设置失败");
         }
       })
-
+      //传数据到父组件
+      var comment = {
+        val: that.data.comment_num+1
+      } // detail对象，提供给事件监听函数
+      this.triggerEvent('myevent', comment)
     },
     commentTextTap: function (e) {
       //console.log('commentTextTap')
@@ -625,6 +632,11 @@ Component({
           }
         }
       })
+      //传数据到父组件
+      var comment = {
+        val: that.data.comment_num - 1
+      } // detail对象，提供给事件监听函数
+      this.triggerEvent('myevent', comment)
     },
     subCommentLongTap: function (e) {
       var that = this;

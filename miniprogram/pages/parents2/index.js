@@ -93,23 +93,33 @@ Page({
     const user = db.collection('user')
     let _this = this
     db.collection('user').where({
-      _openid: '',
+      _openid: app.globalData.openid
     })
       .get({
         success: function (res) {
           if (res.data.length == 0) {
-            db.collection('user').add({
-              // data 字段表示需新增的 JSON 数据
+            wx.cloud.callFunction({
+              name: 'register',
               data: {
-                nickName: _this.data.userInfo.nickName,
-                avatarUrl: _this.data.userInfo.avatarUrl
+                nickName: app.globalData.userInfo.nickName,
+                avatarUrl: app.globalData.userInfo.avatarUrl
               },
-              success(res) {
-                // res 是一个对象，其中有 _id 字段标记刚创建的记录的 id
+              complete: res => {
                 console.log(res)
               },
-              fail: console.error
             })
+            // db.collection('user').add({
+            //   // data 字段表示需新增的 JSON 数据
+            //   data: {
+            //     nickName: _this.data.userInfo.nickName,
+            //     avatarUrl: _this.data.userInfo.avatarUrl
+            //   },
+            //   success(res) {
+            //     // res 是一个对象，其中有 _id 字段标记刚创建的记录的 id
+            //     console.log(res)
+            //   },
+            //   fail: console.error
+            // })
           } else {
             //console.log(res.data)
           }
@@ -196,12 +206,10 @@ Page({
       }).catch(err => {
         console.log(">>>> upload images error:", err)
       }).then(urls => {
-        //console.log(urls)
-        // 调用保存问题的后端接口
-        const db = wx.cloud.database()
-        const user = db.collection('article')
-        db.collection('article').add({
-          // data 字段表示需新增的 JSON 数据
+        console.log('urls')
+        console.log(urls)
+        wx.cloud.callFunction({
+          name: 'publish',
           data: {
             articleId: articleId,
             nickName: app.globalData.userInfo.nickName,
@@ -211,13 +219,36 @@ Page({
             zanNum: 0,
             zanIds: []
           },
-        }).then(res => {
-          console.log(res)
-          wx.hideLoading()
-          wx.navigateTo({
-            url: '../publish/index'
-          })
+          complete: (res) => {
+            console.log(res.result)
+            wx.hideLoading()
+            wx.navigateTo({
+              url: '../publish/index'
+            })
+          },
         })
+        // //console.log(urls)
+        // // 调用保存问题的后端接口
+        // const db = wx.cloud.database()
+        // const user = db.collection('article')
+        // db.collection('article').add({
+        //   // data 字段表示需新增的 JSON 数据
+        //   data: {
+        //     articleId: articleId,
+        //     nickName: app.globalData.userInfo.nickName,
+        //     avatarUrl: app.globalData.userInfo.avatarUrl,
+        //     content: content,
+        //     images: urls,
+        //     zanNum: 0,
+        //     zanIds: []
+        //   },
+        // }).then(res => {
+        //   console.log(res)
+        //   wx.hideLoading()
+        //   wx.navigateTo({
+        //     url: '../publish/index'
+        //   })
+        // })
       })
     }
   }

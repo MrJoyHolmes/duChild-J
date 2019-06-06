@@ -27,8 +27,8 @@
         </view>
       </view>
     </view>
-    <view class="WxComment">
-      <WxComment tipOne="" tipTwo="" submitBtnText="回复" articleID="{{articleId}}" contentLen='1' theme="light"></WxComment>
+    <view id="comment" class="WxComment">
+      <WxComment bind:myevent="onChangeComment" tipOne="" tipTwo="" submitBtnText="回复" articleID="{{articleId}}" contentLen='1' theme="light"></WxComment>
     </view>
 
     <view class="answer-footer flex-wrp">
@@ -43,9 +43,9 @@
                     <image src="../../images/star2.png"></image>
                     <text>收藏</text>
                 </view>
-                <view class="operation-btn flex-item">
+                <view bindtap="onComment" class="operation-btn flex-item">
                     <image src="../../images/comment.png"></image>
-                    <text>302</text>
+                    <text>{{article.commentNum}}</text>
                 </view>
 
             </view>

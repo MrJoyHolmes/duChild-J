@@ -45,7 +45,16 @@ Page({
         fail: console.error
       })
   },
+  onComment: function () {
+    wx.createSelectorQuery().select('#comment').boundingClientRect(function (rect) {
+      // 使页面滚动到底部
+      wx.pageScrollTo({
+        scrollTop: rect.bottom
+      })
+    }).exec()
+  },
   onLike: function(){
+    let that = this
     if(this.data.liked){
       this.setData({
         zanNum: this.data.zanNum - 1,
@@ -53,18 +62,29 @@ Page({
       })
       var zan = this.data.zanIds
       zan.splice(zan.indexOf(app.globalData.openid),1)
-      const db = wx.cloud.database()
-      const user = db.collection('article')
-      console.log(zan)
-      db.collection('article').doc(this.data.id).update({
+      wx.cloud.callFunction({
+        name: 'onLike',
         data: {
-          zanNum: this.data.zanNum,
+          id: that.data.id,
+          zanNum: that.data.zanNum,
           zanIds: zan
         },
-        success: function (res) {
+        complete: res => {
           console.log(res)
-        }
+        },
       })
+      // const db = wx.cloud.database()
+      // const user = db.collection('article')
+      // console.log(zan)
+      // db.collection('article').doc(this.data.id).update({
+      //   data: {
+      //     zanNum: this.data.zanNum,
+      //     zanIds: zan
+      //   },
+      //   success: function (res) {
+      //     console.log(res)
+      //   }
+      // })
     }else{
       this.setData({
         zanNum: this.data.zanNum + 1,
@@ -72,19 +92,60 @@ Page({
       })
       var zan = this.data.zanIds
       zan.push(app.globalData.openid)
-      const db = wx.cloud.database()
-      const user = db.collection('article')
-      console.log(zan)
-      db.collection('article').doc(this.data.id).update({
-        data:{
-          zanNum: this.data.zanNum,
+      wx.cloud.callFunction({
+        name: 'onLike',
+        data: {
+          id: that.data.id,
+          zanNum: that.data.zanNum,
           zanIds: zan
         },
-        success: function (res) {
+        complete: res => {
           console.log(res)
-        }
+        },
       })
+      // const db = wx.cloud.database()
+      // const user = db.collection('article')
+      // console.log(zan)
+      // db.collection('article').doc(this.data.id).update({
+      //   data:{
+      //     zanNum: this.data.zanNum,
+      //     zanIds: zan
+      //   },
+      //   success: function (res) {
+      //     console.log(res)
+      //   }
+      // })
     }
+  },
+
+  onChangeComment: function (e) {
+    //调用云函数写数据
+    console.log(e.detail)
+    wx.cloud.callFunction({
+      name: 'onComment',
+      data: {
+        id: this.data.id,
+        commentNum: e.detail.val
+      },
+      complete: res => {
+        console.log(res)
+      },
+    })
+  },
+  handleImagePreview(e) {
+
+    // var current = e.target.dataset.src
+    // wx.previewImage({
+    //   current: current,
+    //   urls: this.data.images
+    // })
+
+    const idx = e.target.dataset.idx
+    const images = this.data.article.images
+    wx.previewImage({
+      current: images[idx],  //当前预览的图片
+      urls: images,  //所有要预览的图片
+    })
   },
 
   /**

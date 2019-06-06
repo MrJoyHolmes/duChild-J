@@ -22,7 +22,7 @@ image {
 
 .title_box {
   display: flex;
-  height: 70rpx;
+  height: 60rpx;
   justify-content: center;
   margin-top: 20rpx;
 }
@@ -141,7 +141,10 @@ image {
 }
 
 .no_comment {
+  height: 100rpx;
   color: #dadada;
+  font-size: 30rpx;
+
 }
 
 .title_display {
@@ -208,15 +211,20 @@ image {
   border-bottom: 1rpx solid #e1e1e1;
 }
 
+.title_img{
+  margin: auto 0;
+  width: 40rpx;
+  height: 40rpx;
+}
 .title_img image {
-  width: 60rpx;
-  height: 60rpx;
+  width: 40rpx;
+  height: 40rpx;
 }
 
 .title_text {
   display: flex;
   color: #3f9f94;
-  font-size: 38rpx;
+  font-size: 30rpx;
   line-height: 60rpx;
   margin-left: 10rpx;
 }
@@ -265,9 +273,10 @@ image {
 }
 
 .commit_submit_btn {
-  width: 150rpx;
-  height: 65rpx;
-  margin: 2rpx auto 2rpx auto;
+  width: 110rpx;
+  height: 50rpx;
+  font-size: 20rpx;
+  margin: auto
 }
 
 .sub_comment_list_box {

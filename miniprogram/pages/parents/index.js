@@ -15,7 +15,7 @@ Page({
     var that = this
     //调用应用实例的方法获取全局数据
     this.refresh();
-    this.getOpenid()
+    this.getOpenid();
   },
   getOpenid: function () {
     // 调用云函数

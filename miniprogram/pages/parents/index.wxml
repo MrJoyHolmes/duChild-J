@@ -28,7 +28,7 @@
                 <a>{{item.zanNum}} 赞同 </a>
               </view>
               <view class="comments dot">
-                <a>{{item.zanNum}} 评论 </a>
+                <a>{{item.commentNum}} 评论 </a>
               </view>
               <!-- <view class="follow-it">
                 <a>收藏问题</a>

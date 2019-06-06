@@ -141,7 +141,7 @@
 .answer-footer{
     position: fixed;
     bottom: 0;
-    height: 70rpx;
+    height: 50rpx;
     border-top: solid 1px #ebebeb;
     background: #ffffff;
     width: 670rpx;
@@ -184,8 +184,8 @@
 .answer-footer .operation image{
     display: block;
     margin: 0 auto;
-    width: 50rpx;
-    height: 50rpx;
+    width: 30rpx;
+    height: 30rpx;
 }
 .answer-footer .operation-btn text{
     display: block;
@@ -194,6 +194,6 @@
 }
 
 .WxComment{
-  margin-bottom: 80rpx;
+  margin-bottom: 90rpx;
   background: #fff;
 }

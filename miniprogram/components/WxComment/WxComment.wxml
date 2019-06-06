@@ -18,40 +18,6 @@
     <view class="seg_line_right"></view>
   </view>
 
-  <!-- 评论框标题栏 -->
-  <view class="title_box">
-    <view class="title_display">
-      <view class="title_img">
-        <image src="./images/comment.png"></image>
-      </view>
-      <view class="title_text">
-        <text>发表评论</text>
-      </view>
-    </view>
-  </view>
-
-  <view>
-    <form bindsubmit="bindFormSubmit">
-      <view class="comment_display">
-        <textarea class="comment_textarea" placeholder="请输入你的评论^_^" name="comment_text" value="{{comment_textarea_value}}" maxlength='{{textMaxLength}}' focus='{{textarea_focus}}' />
-        <!-- 发布 -->
-        <view class=" {{show_aur_button?'hide':'show comment_submit_display'}}">
-          <view class="comment_submit_tip">
-            <text class="markdown_tip">{{tipOne}}</text>{{tipTwo}}
-          </view>
-          <button class="commit_submit_btn" type="primary" size="mini" plain="false" form-type="submit">{{submitBtnText}}</button>
-        </view>
-        <!-- 授权提示 -->
-        <view class=" {{show_aur_button?'show comment_submit_display':'hide'}}">
-          <view class="comment_submit_tip">
-            <text class="markdown_tip">授权提示：</text>请求获取您的用户头像和昵称。
-          </view>
-          <button class="commit_submit_btn" type="primary" size="mini" plain="false" open-type="getUserInfo" lang="zh_CN" bindgetuserinfo="onGetUserInfo">授权</button>
-        </view>
-      </view>
-    </form>
-  </view>
-
   <!-- 评论列表标题栏 -->
   <view class="title_box">
     <view class="title_display">
@@ -144,6 +110,41 @@
         <text>还没有人评论哦^_^</text>
       </view>
     </view>
+  </view>
+
+
+  <!-- 评论框标题栏 -->
+  <view class="title_box">
+    <view class="title_display">
+      <view class="title_img">
+        <image src="./images/comment.png"></image>
+      </view>
+      <view class="title_text">
+        <text>发表评论</text>
+      </view>
+    </view>
+  </view>
+
+  <view>
+    <form bindsubmit="bindFormSubmit">
+      <view class="comment_display">
+        <textarea class="comment_textarea" placeholder="请输入你的评论^_^" name="comment_text" value="{{comment_textarea_value}}" maxlength='{{textMaxLength}}' focus='{{textarea_focus}}' />
+        <!-- 发布 -->
+        <view class=" {{show_aur_button?'hide':'show comment_submit_display'}}">
+          <view class="comment_submit_tip">
+            <text class="markdown_tip">{{tipOne}}</text>{{tipTwo}}
+          </view>
+          <button class="commit_submit_btn" type="primary" plain="false" form-type="submit">{{submitBtnText}}</button>
+        </view>
+        <!-- 授权提示 -->
+        <view class=" {{show_aur_button?'show comment_submit_display':'hide'}}">
+          <view class="comment_submit_tip">
+            <text class="markdown_tip">授权提示：</text>请求获取您的用户头像和昵称。
+          </view>
+          <button class="commit_submit_btn" type="primary" size="mini" plain="false" open-type="getUserInfo" lang="zh_CN" bindgetuserinfo="onGetUserInfo">授权</button>
+        </view>
+      </view>
+    </form>
   </view>
 
 </view>
