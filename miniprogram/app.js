@@ -41,6 +41,49 @@ App({
         }
       }
     })
+    this.getOpenid()
+  },
+  getOpenid: function () {
+    // 调用云函数
+    wx.cloud.callFunction({
+      name: 'login',
+      data: {},
+      success: res => {
+        console.log('[云函数] [login] user openid: ', res.result.openid)
+        this.globalData.openid = res.result.openid
+      },
+      fail: err => {
+        console.error('[云函数] [login] 调用失败', err)
+        wx.navigateTo({
+          url: '../deployFunctions/deployFunctions',
+        })
+      }
+    })
+    const db = wx.cloud.database()
+    const user = db.collection('user')
+    let _this = this
+    db.collection('user').where({
+      _openid: this.globalData.openid
+    })
+      .get({
+        success: function (res) {
+          if (res.data.length == 0) {
+            wx.cloud.callFunction({
+              name: 'register',
+              data: {
+                nickName: this.globalData.userInfo.nickName,
+                avatarUrl: this.globalData.userInfo.avatarUrl
+              },
+              complete: res => {
+                console.log(res)
+              },
+            })
+          } else {
+            //console.log(res.data)
+          }
+        },
+        fail: console.error
+      })
   },
   globalData: {
     userInfo: null,

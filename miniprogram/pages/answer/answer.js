@@ -10,8 +10,10 @@ Page({
     id:'',
     article: {},
     liked:false,
+    collected:false,
     zanNum:0,
     zanIds:[],
+    collection:[],
     comment:[]
   },
 
@@ -44,6 +46,55 @@ Page({
         },
         fail: console.error
       })
+      db.collection('user').where({
+        _openid: app.globalData.openid
+        })
+        .get().then(res=>{
+          //console.log(res.data[0].collection)
+          that.setData({
+            collection: res.data[0].collection
+          })
+          if (res.data[0].collection.indexOf(this.data.articleId)!=-1){
+            that.setData({
+              collected: true
+            })
+          }
+        })
+    console.log(this.data.collected)
+  },
+  onCollection: function(){
+    let that = this
+    if (this.data.collected) {
+      this.setData({
+        collected: false
+      })
+      var tempCollection = this.data.collection
+      tempCollection.splice(tempCollection.indexOf(this.data.articleId), 1)
+      wx.cloud.callFunction({
+        name: 'onCollection',
+        data: {
+          collection: tempCollection
+        },
+        complete: res => {
+          console.log(res)
+        },
+      })
+    } else {
+      this.setData({
+        collected: true
+      })
+      var tempCollection = this.data.collection
+      tempCollection.push(this.data.articleId)
+      wx.cloud.callFunction({
+        name: 'onCollection',
+        data: {
+          collection: tempCollection
+        },
+        complete: res => {
+          console.log(res)
+        },
+      })
+    }
   },
   onComment: function () {
     wx.createSelectorQuery().select('#comment').boundingClientRect(function (rect) {
@@ -73,18 +124,6 @@ Page({
           console.log(res)
         },
       })
-      // const db = wx.cloud.database()
-      // const user = db.collection('article')
-      // console.log(zan)
-      // db.collection('article').doc(this.data.id).update({
-      //   data: {
-      //     zanNum: this.data.zanNum,
-      //     zanIds: zan
-      //   },
-      //   success: function (res) {
-      //     console.log(res)
-      //   }
-      // })
     }else{
       this.setData({
         zanNum: this.data.zanNum + 1,
@@ -103,24 +142,12 @@ Page({
           console.log(res)
         },
       })
-      // const db = wx.cloud.database()
-      // const user = db.collection('article')
-      // console.log(zan)
-      // db.collection('article').doc(this.data.id).update({
-      //   data:{
-      //     zanNum: this.data.zanNum,
-      //     zanIds: zan
-      //   },
-      //   success: function (res) {
-      //     console.log(res)
-      //   }
-      // })
     }
   },
 
   onChangeComment: function (e) {
     //调用云函数写数据
-    console.log(e.detail)
+    //console.log(e.detail)
     wx.cloud.callFunction({
       name: 'onComment',
       data: {

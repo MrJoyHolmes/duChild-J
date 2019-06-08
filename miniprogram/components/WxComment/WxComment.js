@@ -246,7 +246,7 @@ Component({
                   } // end if
                   if (x == promiseFuncArr.length) {
                     //console.log('finished')
-                    console.log(that.data.all_comment_num);
+                    //console.log(that.data.all_comment_num);
                     // 显示所有评论
                     that.setData({
                       leancloud_comment_data: that.data.leancloud_comment_data,

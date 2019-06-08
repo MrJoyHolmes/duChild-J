@@ -222,8 +222,8 @@ Page({
           complete: (res) => {
             console.log(res.result)
             wx.hideLoading()
-            wx.navigateTo({
-              url: '../publish/index'
+            wx.switchTab({
+              url: '../parents/index'
             })
           },
         })

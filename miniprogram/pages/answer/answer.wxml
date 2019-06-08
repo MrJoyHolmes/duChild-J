@@ -40,7 +40,8 @@
                     <text>{{zanNum}}</text>
                 </view>
                 <view bindtap='onCollection'class="operation-btn flex-item">
-                    <image src="../../images/star2.png"></image>
+                    <image wx:if="{{collected}}" src="../../images/star.png"></image>
+                    <image wx:else src="../../images/star2.png"></image>
                     <text>收藏</text>
                 </view>
                 <view bindtap="onComment" class="operation-btn flex-item">
