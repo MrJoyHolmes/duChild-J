@@ -45,42 +45,13 @@ Page({
       })
   },
   onCollection(){
-    const db = wx.cloud.database()
-    db.collection('user')
-      .where({_openid:app.globalData.appid})
-      .get()
-      .then(res=>{
-        //console.log(res.data[0].collection)
-        collection.forEach(value=>{
-          db.collection('article')
-            .where({articleId:value})
-            .orderBy('articleId', 'desc').limit(6)
-            .get()
-            .then(res => {
-              let feed = res.data
-              //console.log(feed);
-              this.setData({
-                feed: feed,
-                feed_length: feed.length
-              });
-              //console.log(this.data.feed)
-            })
-        })
-      })
-    // const db = wx.cloud.database()
-    // db.collection('article')
-    // .where({})
-    // .orderBy('articleId', 'desc').limit(6)
-    //   .get()
-    //   .then(res => {
-    //     let feed = res.data
-    //     //console.log(feed);
-    //     this.setData({
-    //       feed: feed,
-    //       feed_length: feed.length
-    //     });
-    //     //console.log(this.data.feed)
-    //   })
-    //   .catch(console.error)
-  }
+    wx.navigateTo({
+      url: '../collection/index',
+    })
+  },
+  onArticle() {
+    wx.navigateTo({
+      url: '../publish/index',
+    })
+  },
 })

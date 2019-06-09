@@ -4,8 +4,9 @@
     "pages/parents/index",
     "pages/parents2/index",
     "pages/me/index",
-    "pages/publish/index",
-    "pages/answer/answer"
+    "pages/collection/index",
+    "pages/answer/answer",
+    "pages/publish/index"
   ],
   "window": {
     "backgroundTextStyle": "light",
