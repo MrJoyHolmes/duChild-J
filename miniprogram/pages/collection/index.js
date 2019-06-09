@@ -36,7 +36,7 @@ Page({
     var that = this
     const db = wx.cloud.database()
     db.collection('user')
-      .where({ _openid: app.globalData.appid })
+      .where({ _openid: app.globalData.openid })
       .get()
       .then(res => {
         //console.log(res.data[0].collection)
