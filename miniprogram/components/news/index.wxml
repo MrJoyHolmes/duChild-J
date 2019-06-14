@@ -46,7 +46,17 @@
         <image src='../../image/news-cover.png'></image>
       </view>
       <view class='news-info'>
-        <view class='news-title'> 章子怡走红毯</view>
+        <view class='news-title'> houjingy</view>
+        <view class='news-content'>章子怡赴戛纳电影节走红毯，引发微博网友热烈讨论</view>
+      </view>
+    </view>
+    <view class='news-container'>
+      <!-- images -->
+      <view class='news-cover'>
+        <image src='../../image/news-cover.png'></image>
+      </view>
+      <view class='news-info'>
+        <view class='news-title'> 陈乃镔来来来</view>
         <view class='news-content'>章子怡赴戛纳电影节走红毯，引发微博网友热烈讨论</view>
       </view>
     </view>
