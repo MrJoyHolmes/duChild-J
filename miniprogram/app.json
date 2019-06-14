@@ -6,7 +6,8 @@
     "pages/me/index",
     "pages/collection/index",
     "pages/answer/answer",
-    "pages/publish/index"
+    "pages/publish/index",
+    "pages/wechat/index"
   ],
   "window": {
     "backgroundTextStyle": "light",

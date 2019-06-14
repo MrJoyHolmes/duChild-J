@@ -1,2 +1,20 @@
-<!--components/education/index.wxml-->
-<text>components/education/index.wxml</text>
+<view class='container'>
+<!-- 可滑动区域 -->
+  <scroll-view scroll-y  style="height: 100%;">
+    <view class="picture">  
+    </view>
+
+    <view class='education-container' bindtap='navigateToNewPage'>
+      <!-- images -->
+      <view class='education-cover'>
+        <image src='../../images/jd1.jpg' mode='aspectFill'></image>
+      </view>
+      <view class='education-info'>
+        <view class='education-title'>南方医科大学公益活动报名</view>
+        <view class='education-content'>南方医科大学公益活动报名马上就要开始啦,就要开始啦</view>
+      </view>
+    </view>
+  </scroll-view>
+</view>
+
+

@@ -4,36 +4,24 @@
     <view class="picture">  
     </view>
 
-    <view class='news-container' bindtap='navigateToNewPage'>
+    <view class='activity-container' bindtap='navigateToNewPage'>
       <!-- images -->
-      <view class='news-cover'>
-        <image src='../../image/news-cover.png'></image>
+      <view class='activity-cover'>
+        <image src='../../images/jd1.jpg' mode='aspectFill'></image>
       </view>
-      <view class='news-info'>
-        <view class='news-title'>章子怡走红毯章子怡走红毯</view>
-        <view class='news-content'>章子怡赴戛纳电影节走红毯，引发微博网友热烈讨论</view>
+      <view class='activity-info'>
+        <view class='activity-title'>南方医科大学公益活动报名</view>
+        <view class='activity-content'>南方医科大学公益活动报名马上就要开始啦,就要开始啦</view>
       </view>
     </view>
-    <view class='news-container'>
-      <!-- images -->
-      <view class='news-cover'>
-        <image src='../../image/news-cover.png'></image>
+    <view class='activity-container'>
+      <view class='activity-cover'>
+        <image src='../../images/jd2.jpg'></image>
       </view>
-      <view class='news-info'>
-        <view class='news-title'> 章子怡走红毯</view>
-        <view class='news-content'>章子怡赴戛纳电影节走红毯，引发微博网友热烈讨论</view>
-      </view>
-    </view>
-    <view class='news-container'>
-      <!-- images -->
-      <view class='news-cover'>
-        <image src='../../image/news-cover.png'></image>
-      </view>
-      <view class='news-info'>
-        <view class='news-title'> 章子怡走红毯</view>
-        <view class='news-content'>章子怡赴戛纳电影节走红毯，引发微博网友热烈讨论</view>
+      <view class='activity-info'>
+        <view class='activity-title'> 北京正大医院公益活动报名</view>
+        <view class='activity-content'>南方正大医院公益活动报名马上就要开始啦</view>
       </view>
     </view>
   </scroll-view>
 </view>
-

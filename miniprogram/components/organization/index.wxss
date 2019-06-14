@@ -1,1 +1,175 @@
-/* components/organization/index.wxss */
+
+/* 搜索栏输入样式设置 */
+.search-input{
+  padding: 6rpx;
+	background-color:#4fbfff;
+	display: flex;
+	flex-direction: row;
+	height: 60rpx;
+	width: 95%;
+  border-radius:30rpx;
+	align-items: center;
+  margin: auto;
+  margin-top: 15rpx;
+}
+.search-input input{
+  padding: 10rpx 15rpx;
+
+}
+.search-icon{
+	width: 25rpx;
+	height: 25rpx;
+  padding-left: 10rpx;
+}
+.search-text{
+	top:0px;
+	padding:0px;
+	left: 0rpx;
+	right: 0rpx;
+  font-size: 30rpx;
+  color: #fff;
+}
+/* 设置默认输入样式 */
+.phcolor{
+  color: #fff;
+}
+
+/* 机构样式设置 */
+.hospital-container{
+  height: 310rpx;
+  width: 95%;
+  background-color: #fff;
+  border: 1px solid #fff;
+  margin: auto;
+  margin-top: 15rpx;
+  border-radius: 14rpx;
+
+}
+
+
+/* 机构 标题栏 */
+.hospital-title{
+  height: 60rpx;
+  width:100%;
+}
+/* 机构名称设计 */
+.hospital-title .title{
+  height: 45rpx;
+  padding-left: 20rpx;
+  border-left: 6rpx solid #4fbfff; 
+  margin-top:15rpx;
+  margin-left: 15rpx;
+  color: #4fbfff;
+  font-size: 30rpx;
+  line-height: 45rpx;
+}
+/* 医院名称 */
+.hospital-container .hospital-name{
+  height: 100px;
+  width: 100%;
+  display: flex;
+  flex-direction:row;
+}
+/* 单个医院列表 */
+.hospital-single{
+  height: 190rpx;
+  width: 135rpx; 
+  display: flex;
+  flex-direction:column;
+  margin-left:20rpx; 
+
+}
+.hospital-single .hospital-img{
+  height: 120rpx;
+  width: 120rpx;
+  margin:auto;
+}
+
+.hospital-single .hospital{
+  height: 80rpx;
+  width: 120rpx;
+  font-size: 24rpx;
+  text-align: center;
+  margin:auto;
+  margin-top: 6rpx;
+  color:  #999;
+}
+
+/* 医生栏格式设置 */
+.doctor-container{
+  height: 240rpx;
+  width: 95%;
+  background-color: #fff;
+  border: 1px solid #fff;
+  margin: auto;
+  margin-top: 40rpx;
+  border-radius: 16rpx;
+  display: flex;
+  flex-direction: column;
+  padding-left: 20rpx;
+  position: relative;
+}
+/* 大牌名医的配置 */
+.top-tips{
+  height:60rpx;
+  width: 170rpx;
+  text-align: center;
+  background-color:   #4fbfff;
+  position: absolute;
+  top:-16rpx;
+  right: 5%;
+  color: #fff;
+  font-size: 32rpx;
+  line-height: 60rpx;
+}
+
+.doc-top{
+  height: 120rpx;
+  width: 100%;
+  /* border-bottom: 1px solid black; */
+  display: flex;
+  flex-direction: row;
+  padding-top: 5px;
+}
+/* 医生头像、姓名、所在医院 */
+.doc-top .doc-img{
+  height: 100rpx;
+  width: 100rpx;
+  /* border: 1px solid black; */
+}
+/*  */
+.doc-top .doc-top-intro{
+  height: 100rpx;
+  width: 500rpx;
+  margin-left: 30rpx;
+  /* border: 1px solid black; */
+}
+.doc-top-intro .doc-name{
+  height: 60rpx;
+  width: 500rpx;
+  font-size: 32rpx;
+  line-height: 60rpx;
+}
+
+.doc-top-intro .doc-address{
+  height: 40rpx;
+  width: 500rpx;
+  font-size: 28rpx;
+  color: #4fbfff;
+  line-height: 40rpx;
+}
+/* 医生简介 */
+.doc-introduction{
+  height: 80rpx;
+  width: 100%;
+  /* border-bottom: 1px solid black; */
+  font-size: 26rpx;
+  color:  #999;
+}
+.doc-title{
+  height: 40rpx;
+  width: 100%;
+  font-size: 24rpx;
+  color: #4fbfff;
+  margin-left: 20rpx;
+}

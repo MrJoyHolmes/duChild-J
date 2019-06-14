@@ -10,6 +10,16 @@
   height: 0;
   color: transparent;
 } */
+/* 轮播图展示区域 */
+.indicator-wrap{
+  width: 100%; 
+  height: auto; 
+}
+.swiper-item{
+    display: block;
+    width:100%;
+    height: 325rpx;
+}
 
 .picture{
   width:100%;
@@ -24,10 +34,10 @@ height:161rpx;
 width: 100%;
 /* border:solid 1rpx red; */
 box-sizing: border-box;
-font-size: 14px;
+font-size: 14rpx;
 background-color: #fff;
-margin-bottom: 10px;
-padding-top: 5px;
+margin-bottom: 20rpx;
+padding-top: 15rpx;
 display: flex;
 flex-direction: row;
 }
@@ -53,12 +63,24 @@ flex-direction: row;
 }
 
 .news-title{
-font-size: 16px;
+font-size: 30rpx;
 font-family: Arial, Helvetica, sans-serif;
-
+display: -webkit-box;
+overflow: hidden;
+text-overflow: ellipsis;
+word-break: break-all;
+-webkit-box-orient: vertical;
+-webkit-line-clamp: 1;
 }
 
 .news-content{
-font-size: 12px;
+font-size: 24rpx;
 color: #999;
+margin-top:5rpx; 
+display: -webkit-box;
+overflow: hidden;
+text-overflow: ellipsis;
+word-break: break-all;
+-webkit-box-orient: vertical;
+-webkit-line-clamp: 3;
 }

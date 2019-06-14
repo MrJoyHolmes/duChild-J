@@ -1,2 +1,48 @@
-<!--components/organization/index.wxml-->
-<text>components/organization/index.wxml</text>
+<view class='org-container'>
+  <view class='org-search'>
+    <view class='search-input'>
+      <image class='search-icon' src='/images/ath.png' mode='aspectFit'></image>
+      <input class='search-text' placeholder='搜索医疗机构、专家'  placeholder-class="phcolor"></input>
+    </view>
+  </view>
+  <view class='hospital-container'>
+    <view class='hospital-title'>
+      <view class='title'>
+        机构
+      </view> 
+    </view>
+    <scroll-view scroll-x style="height: 100px;width:100%">
+      <view class='hospital-name'>
+        <block wx:for='{{organization}}' wx:key="{{index}}" bindTap='show'>
+          <view class='hospital-single'>
+            <image class='hospital-img' src='{{item.img}}'></image>
+            <view class='hospital'>{{item.title}}</view>
+          </view>
+        </block>
+      </view>
+    </scroll-view>
+  </view>
+      
+  <view class='doctor-container'>
+    <view class='top-tips'>
+      大牌名医 
+    </view>
+    <view class='doc-top'>
+      <image class='doc-img' src='../../images/me.png' mode='aspectFit'></image>
+      <view class='doc-top-intro'>
+        <view class='doc-name'>
+          玛雅 主任医生 深圳
+        </view>
+        <view class='doc-address'>
+          深圳医科大学
+        </view>
+      </view>
+    </view>
+    <view class='doc-introduction'>
+      吧啦吧啦哔哩哔哩哔哩哔哩啦哔哩哔哩哔哩哔哩吧啦吧啦哔哩哩哔哩吧啦吧啦哔哩哔哩哔哩哔哩吧
+    </view>
+    <view class='doc-title'>
+      教授 医学博士
+    </view>
+  </view>
+</view>

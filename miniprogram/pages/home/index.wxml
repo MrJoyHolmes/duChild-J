@@ -13,16 +13,21 @@
 
   <swiper current="{{currentIndex}}" bindchange='changeView'duration="300" class='display-major'> 
     <swiper-item>
-      <news></news>
+      <news></news> 
     </swiper-item>
     <!-- 公益活动 -->
     <swiper-item>
       <activity></activity>
     </swiper-item>
-    <swiper-item>康复教育</swiper-item>
-    <swiper-item>专家机构</swiper-item>
+    <swiper-item>
+      <education></education>
+    </swiper-item>
+    <swiper-item>
+      <organization></organization>
+    </swiper-item>
   </swiper>
 
 <!-- 新闻标题展示 -->
 </view>
+
 

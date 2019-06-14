@@ -1,7 +1,10 @@
 {
   "component": true,
   "usingComponents": {
-  "news":"/components/news/index",
-  "activity": "/components/activity/index"
-  }
+    "news": "/components/news/index",
+    "activity": "/components/activity/index",
+    "education": "/components/education/index",
+    "organization": "/components/organization/index"
+  },
+  "enablePullDownRefresh": true
 }
