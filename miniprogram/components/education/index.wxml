@@ -1,20 +1,17 @@
 <view class='container'>
 <!-- 可滑动区域 -->
   <scroll-view scroll-y  style="height: 100%;">
-    <view class="picture">  
-    </view>
-
-    <view class='education-container' bindtap='navigateToNewPage'>
-      <!-- images -->
-      <view class='education-cover'>
-        <image src='../../images/jd1.jpg' mode='aspectFill'></image>
+    <block wx:for="{{education}}" wx:key="{{index}}">
+      <view class='news-container' bindtap='navigateToNewPage' data-url="{{item.url}}">
+        <!-- images  -->
+        <view class='news-cover'>
+          <image src='{{item.imgId}}'></image>
+        </view>
+        <view class='news-info'>
+          <view class='news-title'>{{item.title}}</view>
+          <view class='news-content'>{{item.content}}</view>
+        </view>
       </view>
-      <view class='education-info'>
-        <view class='education-title'>南方医科大学公益活动报名</view>
-        <view class='education-content'>南方医科大学公益活动报名马上就要开始啦,就要开始啦</view>
-      </view>
-    </view>
+    </block>   
   </scroll-view>
 </view>
-
-

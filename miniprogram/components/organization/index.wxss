@@ -1,4 +1,10 @@
+.org-container{
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
 
+}
 /* 搜索栏输入样式设置 */
 .search-input{
   padding: 6rpx;
@@ -165,6 +171,12 @@
   /* border-bottom: 1px solid black; */
   font-size: 26rpx;
   color:  #999;
+  display: -webkit-box;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  word-break: break-all;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
 }
 .doc-title{
   height: 40rpx;

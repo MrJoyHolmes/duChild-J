@@ -11,13 +11,54 @@ Component({
    * 组件的初始数据
    */
   data: {
-    organization: [{ title: '南方医科大学深圳医院', img: '../../images/organization.png' }, { title: '北京市人民医院', img: '../../images/organization.png' }, { title: '武汉中南医院', img: '../../images/organization.png' }, { title: '北京市人民医院', img: '../../images/organization.png' }, { title: '天津市人民医院', img: '../../images/organization.png' }, { title: '上海康复教育中心', img: '../../images/organization.png' }, { title: '广州康复教育中心', img: '../../images/organization.png' }]
+    organization: [],
+    doctor:[]
   },
-
+  ready: function () {
+    wx.showLoading({
+      title: '加载中',
+    });
+    console.log("ready");
+    const db = wx.cloud.database()
+    db.collection('organization').get({
+      success: res => {
+        this.setData({
+          organization: res.data
+        })
+        console.log(this.data.organization);
+      }, fail: err => {
+        wx.showToast({
+          icon: "none",
+          title: '查询记录失败',
+        })
+      }
+    });
+    db.collection('doctor').get({
+      success: res => {
+        this.setData({
+          doctor: res.data
+        })
+        console.log(this.data.doctor);
+      }, fail: err => {
+        wx.showToast({
+          icon: "none",
+          title: '查询记录失败',
+        })
+      }
+    })
+    wx.hideLoading();
+  },
   /**
    * 组件的方法列表
    */
   methods: {
+    navigateToNewPage(e) {
+      let url = e.currentTarget.dataset.url;
 
+      wx.navigateTo({
+        url: '/pages/wechat/index?url=' + url,  //字符串拼接实现页面跳转
+      })
+      console.log(url);
+    }
   }
 })

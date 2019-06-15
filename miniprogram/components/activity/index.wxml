@@ -1,27 +1,16 @@
 <view class='container'>
 <!-- 可滑动区域 -->
   <scroll-view scroll-y  style="height: 100%;">
-    <view class="picture">  
-    </view>
-
-    <view class='activity-container' bindtap='navigateToNewPage'>
-      <!-- images -->
-      <view class='activity-cover'>
-        <image src='../../images/jd1.jpg' mode='aspectFill'></image>
+    <block wx:for="{{activities}}" wx:key="{{index}}">
+      <view class='activity-container' bindtap='navigateToNewPage' data-url="{{item.url}}">
+        <view class='activity-cover'>
+          <image src='{{item.imgId}}'></image>
+        </view>
+        <view class='activity-info'>
+          <view class='activity-title'> {{item.title}}</view>
+          <view class='activity-content'>{{item.content}}</view>
+        </view>
       </view>
-      <view class='activity-info'>
-        <view class='activity-title'>南方医科大学公益活动报名</view>
-        <view class='activity-content'>南方医科大学公益活动报名马上就要开始啦,就要开始啦</view>
-      </view>
-    </view>
-    <view class='activity-container'>
-      <view class='activity-cover'>
-        <image src='../../images/jd2.jpg'></image>
-      </view>
-      <view class='activity-info'>
-        <view class='activity-title'> 北京正大医院公益活动报名</view>
-        <view class='activity-content'>南方正大医院公益活动报名马上就要开始啦</view>
-      </view>
-    </view>
+    </block> 
   </scroll-view>
 </view>
