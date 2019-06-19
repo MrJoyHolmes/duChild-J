@@ -11,10 +11,10 @@
   ],
   "window": {
     "backgroundTextStyle": "light",
-    "navigationBarBackgroundColor": "#fbf9fe",
+    "navigationBarBackgroundColor": "#4fbfff",
     "navigationBarTitleText": "嘟小孩",
-    "navigationBarTextStyle": "black",
-    "backgroundColor": "#fbf9fe"
+    "navigationBarTextStyle": "white",
+    "backgroundColor": "#4fbfff"
   },
   "tabBar": {
     "color": "#959394",

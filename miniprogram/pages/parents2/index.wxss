@@ -112,3 +112,7 @@ page {
 .q-image-remover {
   text-align: center;
 }
+
+.weui-btn{
+  background-color: #1ca5fd
+}

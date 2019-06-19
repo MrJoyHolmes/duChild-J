@@ -223,7 +223,12 @@ Page({
             console.log(res.result)
             wx.hideLoading()
             wx.switchTab({
-              url: '../parents/index'
+              url: '../parents/index',
+              success: function (e) {
+                var page = getCurrentPages().pop();
+                if (page == undefined || page == null) return;
+                page.onLoad();
+              }  
             })
           },
         })

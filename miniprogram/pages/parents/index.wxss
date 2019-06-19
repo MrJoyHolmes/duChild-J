@@ -1,4 +1,14 @@
 /* pages/parents/index.wxss */
+.nav-container {
+  height: 10%;
+  box-sizing: border-box;
+  font-size: 40rpx;
+  background-color:#4fbfff;
+  display: flex;
+  align-items: center;
+  padding-left: 20rpx;
+}
+
 .container{
   height: 1500rpx;
 }

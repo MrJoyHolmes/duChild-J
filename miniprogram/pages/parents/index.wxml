@@ -1,5 +1,7 @@
 <!--pages/parents/index.wxml-->
-
+<!-- <view class="nav-container">
+<text>家长分享社区</text>
+</view> -->
 
 <scroll-view scroll-y="true" class="container discovery withtab" bindscrolltoupper="upper" bindscrolltolower="lower"  scroll-into-view="{{toView}}" scroll-top="{{scrollTop}}">
   <view class="ctnt0">

@@ -131,8 +131,9 @@
     font-size: 32rpx;
     color: #454545;
     line-height: 44rpx;
-    word-break: keep-all;
-    word-wrap: break-word
+    /* word-break: keep-all;
+    word-wrap: break-word */
+    word-break: break-all
 }
 .answer-content image{
     width: 100%;
