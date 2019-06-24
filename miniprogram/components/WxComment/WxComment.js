@@ -10,6 +10,7 @@ const app = getApp();
 AV.init({
   appId: 'qdl4sawDCfbgSxPKuFxCw7vz-gzGzoHsz',
   appKey: 'p0dTqCyX9GWTKBFEmoWeTEgK',
+  serverURLs: 'https://avoscloud.com',
 });
 
 Component({
