@@ -43,5 +43,5 @@
   </view>
 </scroll-view>
 <view bindtap='adddetial'>
-  <image class="add_icon" src="../../images/write.png"></image>
+  <image class="add_icon" src="../../images/add.png"></image>
 </view>

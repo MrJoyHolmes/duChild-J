@@ -19,11 +19,13 @@ App({
     wx.login({
       success: res => {
         // 发送 res.code 到后台换取 openId, sessionKey, unionId
+        this.getOpenid()
       }
     })
     // 获取用户信息
     wx.getSetting({
       success: res => {
+        console.log("success")
         if (res.authSetting['scope.userInfo']) {
           // 已经授权，可以直接调用 getUserInfo 获取头像昵称，不会弹框
           wx.getUserInfo({
@@ -41,16 +43,42 @@ App({
         }
       }
     })
-    this.getOpenid()
+    //this.getOpenid()
   },
   getOpenid: function () {
     // 调用云函数
+    let _this = this
     wx.cloud.callFunction({
       name: 'login',
       data: {},
       success: res => {
         console.log('[云函数] [login] user openid: ', res.result.openid)
-        this.globalData.openid = res.result.openid
+        _this.globalData.openid = res.result.openid
+
+        const db = wx.cloud.database()
+        const user = db.collection('user')
+
+        //console.log(res.result.openid)
+        db.collection('user').where({
+          _openid: _this.globalData.openid
+        })
+          .get({
+            success: function (res) {
+              console.log(res)
+              if (res.data.length == 0) {
+                //console.log("authorized")
+                wx.navigateTo({
+                  url: '../authorize/authorize',
+                })
+              } else {
+                //console.log(res.data)
+                wx.switchTab({
+                  url: '../home/index'
+                })
+              }
+            },
+            fail: console.error
+          })
       },
       fail: err => {
         console.error('[云函数] [login] 调用失败', err)
@@ -59,31 +87,6 @@ App({
         })
       }
     })
-    const db = wx.cloud.database()
-    const user = db.collection('user')
-    let _this = this
-    db.collection('user').where({
-      _openid: this.globalData.openid
-    })
-      .get({
-        success: function (res) {
-          if (res.data.length == 0) {
-            wx.cloud.callFunction({
-              name: 'register',
-              data: {
-                nickName: this.globalData.userInfo.nickName,
-                avatarUrl: this.globalData.userInfo.avatarUrl
-              },
-              complete: res => {
-                console.log(res)
-              },
-            })
-          } else {
-            //console.log(res.data)
-          }
-        },
-        fail: console.error
-      })
   },
   globalData: {
     userInfo: null,

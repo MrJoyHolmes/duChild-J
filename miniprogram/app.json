@@ -7,7 +7,8 @@
     "pages/collection/index",
     "pages/answer/answer",
     "pages/publish/index",
-    "pages/wechat/index"
+    "pages/wechat/index",
+    "pages/authorize/authorize"
   ],
   "window": {
     "backgroundTextStyle": "light",
